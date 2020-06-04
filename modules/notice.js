@@ -14,7 +14,7 @@ export default function reducer(state = idInitialState, action) {
         case ntc.NTCID:
             return {
                 ...state,
-                data: state.data + 1,
+                data: action.data
             }
         default:
             return state

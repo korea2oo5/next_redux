@@ -1,18 +1,38 @@
 import NoticeList from "../components/NoticeList";
-import React, { useCallback} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { getNtc } from '../modules/notice'
+import React from 'react';
 
 const NoticeContainers = (props) => {
-    const dispatch = useDispatch();
-    const data = useSelector(state => state.notice.data);
-    const OnChange = useCallback(() => dispatch(getNtc()), [dispatch]);
-
     return (
         <>
-            <NoticeList props={props.props} onChange={OnChange} data={data}/>
+            <NoticeList props={props.props} />
         </>
     )
 };
 
 export default NoticeContainers;
+
+// import React, {Component} from 'react';
+// import {connect} from 'react-redux';
+// import NoticeList from "../components/NoticeList";
+// import { getNtc } from '../modules/notice';
+//
+// class NoticeContainers extends Component {
+//     handleSelect = data =>{
+//         const { getNtc } = this.props;
+//         getNtc(data)
+//     };
+//
+//     render() {
+//         const { data, props } = this.props;
+//         return <NoticeList props={props} onSelect={this.handleSelect} selected={data}/>
+//     }
+// }
+//
+// const mapStateToProps = state => ({
+//     data: state.notice.data
+// });
+// const mapDispatchToProps = dispatch => ({
+//     getNtc: data => dispatch(getNtc(data))
+// });
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(NoticeContainers);

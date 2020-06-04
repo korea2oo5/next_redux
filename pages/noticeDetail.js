@@ -1,17 +1,11 @@
-import {useDispatch, useSelector} from "react-redux";
-import React, {useEffect} from "react";
-import { getNtc } from '../modules/notice'
+import {useSelector} from "react-redux";
+import React from "react";
 import axios from 'axios';
 
 const noticeDetail = ({info}) => {
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getNtc());
-    }, [])
-
     const NtcId = useSelector(state => state.notice.data);
+
     console.log(NtcId)
     return (
         <>
@@ -35,6 +29,7 @@ const noticeDetail = ({info}) => {
 
 noticeDetail.getInitialProps = async () => {
 
+    // const NtcId = useSelector(state => state.notice.data)
     const response = await axios.get('http://15.165.161.162:8086/api/web/notice/NoticeInfo',{
         params: {
             NTC_ID : 269

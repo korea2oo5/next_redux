@@ -1,20 +1,24 @@
-import React from 'react';
+import React from "react";
 import Link from 'next/link';
+import {useDispatch} from 'react-redux';
+import { getNtc } from '../modules/notice'
 
-const NoticeList = (props, {onChange, data}) => {
+const NoticeList = (props) => {
 
     const lists = props.props;
 
+    const dispatch = useDispatch();
+
     return(
-    <>
-        <div>
-            {lists && lists.map(list => (
-                <>
-                    <Link href='/noticeDetail'><li props={list} key={list.NTC_ID} data={data} onClick={onChange}>{list.NTC_TITLE}</li></Link>
-                </>
-            ))}
-        </div>
-    </>
+        <>
+            <div>
+                {lists && lists.map(list => (
+                    <>
+                        <Link href='/noticeDetail'><li props={list} key={list.NTC_ID} onClick={() => dispatch(getNtc(list.NTC_ID))}>{list.NTC_TITLE}</li></Link>
+                    </>
+                ))}
+            </div>
+        </>
     )
 
 };
