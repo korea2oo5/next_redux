@@ -7,7 +7,6 @@ const Index = ({lists}) => {
     return (
         <>
             <NoticeContainers props={lists}/>
-
         </>
     )
 };
